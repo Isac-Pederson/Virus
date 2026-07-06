@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:virus/ui/themes/app_theme.dart';
 import 'package:virus/ui/view/login_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child:MyApp()));
 }
 
 final GoRouter _router = GoRouter(routes: <RouteBase>[
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(),
+      theme: AppTheme.theme,
       home: MaterialApp.router(routerConfig: _router)
     );
   }
