@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:uuid/uuid.dart';
 import 'package:virus/data/dbman.dart';
 import 'package:virus/data/model/wko.dart';
 
@@ -34,7 +33,7 @@ class WkoRepository {
     return row == null ? null : _fromRow(row);
   }
 
-  Future<void> insert(Wko wko) => _db.insert(_table, _toRow(wko));
+  Future<void> insert(Wko wko) => _db.upsert(_table, _toRow(wko));
   Future<void> update(Wko wko) => _db.update(_table, _toRow(wko));
   Future<void> delete(String id) => _db.delete(_table, id);
 }

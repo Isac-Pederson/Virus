@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:virus/ui/viewmodel/login_viewmodel.dart';
 
 class LoginView extends ConsumerStatefulWidget {
@@ -70,10 +71,13 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 ElevatedButton(
                   onPressed: state.isLoading
                       ? null
-                      : () => vm.submit(
+                      : () {
+                          vm.submit(
                           emailController.text.trim(),
                           passwordController.text,
-                        ),
+                        );
+                        context.go("/wkoList");
+                        },
                   child: state.isLoading
                       ? const SizedBox(
                           height: 20,

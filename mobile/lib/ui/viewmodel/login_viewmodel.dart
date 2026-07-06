@@ -43,7 +43,7 @@ class LoginViewModel extends Notifier<LoginState> {
       // } else {
       //   await ref.read(authServiceProvider).login(email, password);
       // }
-      throw UnimplementedError('Auth backend not connected yet');
+      print('Auth backend not connected yet');
     } catch (e) {
       state = state.copyWith(
         errorMessage: 'Something went wrong. Please try again.',

@@ -37,4 +37,35 @@ class DBMan {
         );
     }
   }
+   Future<int> upsert(String table, Map<String, dynamic> row) async {
+    final db = await database;
+    return db.insert(table, row, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  Future<List<Map<String, dynamic>>> queryAll(String table) async {
+    final db = await database;
+    return db.query(table);
+  }
+
+  Future<Map<String, dynamic>?> queryById(String table, String id) async {
+    final db = await database;
+    final rows = await db.query(table, where: 'id = ?', whereArgs: [id]);
+    return rows.isEmpty ? null : rows.first;
+  }
+
+  Future<int> update(String table, Map<String, dynamic> row) async {
+    final db = await database;
+    return db.update(table, row, where: 'id = ?', whereArgs: [row['id']]);
+  }
+
+  Future<int> delete(String table, String id) async {
+    final db = await database;
+    return db.delete(table, where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<void> close() async {
+    final db = await database;
+    await db.close();
+    _db = null;
+  }
 }

@@ -3,13 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:virus/ui/themes/app_theme.dart';
 import 'package:virus/ui/view/login_view.dart';
+import 'package:virus/ui/view/wko_list_view.dart';
 
 void main() {
   runApp(const ProviderScope(child:MyApp()));
 }
 
 final GoRouter _router = GoRouter(routes: <RouteBase>[
-  GoRoute(path: "/" ,builder:(context, state) => const LoginView())
+  GoRoute(path: "/" ,builder:(context, state) => const LoginView()),
+  GoRoute(path: "/wkoList" ,builder:(context, state) => const WkoListView())
 ]
 
 );
