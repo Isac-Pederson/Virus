@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'selection_item_dto.freezed.dart';
-part 'selection_item_dto.g.dart';
+part 'selection_item.freezed.dart';
+part 'selection_item.g.dart';
 
 @freezed
 abstract class SelectionItem with _$SelectionItem {

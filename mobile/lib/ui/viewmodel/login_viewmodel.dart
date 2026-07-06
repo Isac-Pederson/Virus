@@ -37,7 +37,7 @@ class LoginViewModel extends Notifier<LoginState> {
     state = state.copyWith(isLoading: true, clearError: true);
 
     try {
-      // TODO: wire to Go server once auth endpoint exists, e.g.
+      // TODO: wire to C# server once auth endpoint exists, e.g.
       // if (state.isSignup) {
       //   await ref.read(authServiceProvider).signup(email, password);
       // } else {
