@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:virus/ui/viewmodel/wko_list_viewmodel.dart';
 
 class WkoListView extends ConsumerWidget {
@@ -25,13 +26,16 @@ class WkoListView extends ConsumerWidget {
                   return ListTile(
                     title: Text(wko.code.isEmpty ? '(no code)' : wko.code),
                     subtitle: Text(wko.description),
-                    trailing: Text(wko.status.description),
+                    trailing: Text(wko.status!.description),
+                    onTap: () {
+                      context.go('/wkoDetail', extra: wko);
+                    },
                   );
                 },
               ),
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => vm.addWko(vm.createDraftForTesting()),
+        onPressed: () => context.go('wkoDetail', extra: vm.createDraft(isWko: true)),
         child: const Icon(Icons.add),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:virus/data/dbman.dart';
 
 
 final loginViewModelProvider = NotifierProvider<LoginViewModel, LoginState>(
